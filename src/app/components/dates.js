@@ -14,7 +14,7 @@ let months = [
   "December",
 ];
 
-for (let i = 0; i < 120; i++) {
+for (let i = 0; i < 240; i++) {
   dates.push({
     id: 1,
     days: 0,

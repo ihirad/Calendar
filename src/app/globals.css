@@ -39,5 +39,6 @@
 }
 
 textarea {
+  display: flex;
   background-color: lightblue;
 }

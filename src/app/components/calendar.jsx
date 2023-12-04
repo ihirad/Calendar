@@ -1,8 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { validator } from "is-my-date-valid";
 import defaultDates from "./dates.js";
-import Input from "./input.jsx";
 
 export default function Calendar({
   setDaySelected,
@@ -11,7 +9,7 @@ export default function Calendar({
   daysArr,
 }) {
   const [dates, setDates] = useState(defaultDates);
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(71);
   //const [daysArr, setDaysArr] = useState([]);
   //const [daySelected, setDaySelected] = useState(null);
   //const [isBlue, setBlue] = useState("false");

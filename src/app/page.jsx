@@ -1,8 +1,6 @@
 "use client";
 import { useState } from "react";
 import Calendar from "./components/calendar";
-import { validator } from "is-my-date-valid";
-import Days from "./components/days";
 import Input from "./components/input";
 
 export default function Home() {
