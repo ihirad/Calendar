@@ -1,19 +1,36 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import defaultDates from "./dates.js";
 
-export default function Input(daysArr, setDaysArr, index) {
+export default function Input({ daySelected, setDaysArr }) {
   const [entry, setEntry] = useState("");
+
+  useEffect(() => {
+    if (daySelected) {
+      setEntry(daySelected.diaryEntry || "");
+    } else {
+      setEntry("");
+    }
+  }, [daySelected]);
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(entry);
+    if (daySelected) {
+      setDaysArr((prevDays) =>
+        prevDays.map((day) =>
+          day.dayNum === daySelected.dayNum
+            ? { ...day, diaryEntry: entry, diaryEmoji: "❤️" }
+            : day
+        )
+      );
+      setEntry("");
+    }
   }
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <p>
-          <label htmlFor="diary">Enter Diary Entry:</label>
+          <label>Enter Diary Entry:</label>
         </p>
         <textarea
           id="diary"

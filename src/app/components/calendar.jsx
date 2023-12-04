@@ -4,10 +4,17 @@ import { validator } from "is-my-date-valid";
 import defaultDates from "./dates.js";
 import Input from "./input.jsx";
 
-export default function Calendar() {
+export default function Calendar({
+  setDaySelected,
+  daySelected,
+  setDaysArr,
+  daysArr,
+}) {
   const [dates, setDates] = useState(defaultDates);
   const [index, setIndex] = useState(0);
-  const [daysArr, setDaysArr] = useState([]);
+  //const [daysArr, setDaysArr] = useState([]);
+  //const [daySelected, setDaySelected] = useState(null);
+  //const [isBlue, setBlue] = useState("false");
 
   function buttonLeftMonth() {
     setIndex(index - 1);
@@ -35,40 +42,46 @@ export default function Calendar() {
   }, [dates, index]);
 
   function handleClick(day) {
-    // console.log("clicked");
-    // const oldDays = daysArr.filter(
-    //   (currentDay) => currentDay.dayNum !== day.dayNum
-    // );
+    setDaySelected(day);
+    const newDay = daysArr.filter(
+      (currentDay) => currentDay.dayNum === day.dayNum
+    );
   }
 
   return (
     <div>
+      {/* month toggle */}
       <div id="monthYearContainer">
         <button onClick={buttonLeftMonth}>{"<"}</button>
         <p>{dates[index].month}</p>
         <button onClick={buttonRightMonth}>{">"}</button>
       </div>
+      {/* year toggle */}
       <div id="monthYearContainer">
         <button onClick={buttonLeftYear}>{"<"}</button>
         <p>{dates[index].year}</p>
         <button onClick={buttonRightYear}>{">"}</button>
       </div>
+      {/* day display */}
       <div id="daysContainer">
         <div id="datesContainer">
           {daysArr.map((day) => {
+            //const isSelected = day.dayNum === daySelected?.dayNum;
+            const isSelected = daySelected && day.dayNum === daySelected.dayNum;
+            const boxClass = isSelected ? "blue-boxes" : "boxes";
             return (
               <div
-                className="boxes"
+                className={boxClass}
                 key={day.dayNum}
-                onClick={handleClick(day)}
+                onClick={() => handleClick(day)}
               >
                 {day.dayNum}
+                {day.diaryEmoji}
               </div>
             );
           })}
         </div>
       </div>
-      <Input daysArr={daysArr} setDaysArr={setDaysArr} index={index} />
     </div>
   );
 }
