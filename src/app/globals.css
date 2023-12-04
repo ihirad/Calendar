@@ -1,8 +1,20 @@
+body {
+  background-color: rgba(0, 0, 0, 0);
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-image: linear-gradient(90deg, rgb(226, 226, 226), rgb(201, 214, 255));
+  background-size: auto;
+  background-origin: padding-box;
+  background-clip: border-box;
+}
+
 #calendar-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(248, 215, 215);
+  color: lightsalmon;
 }
 
 #monthYearContainer {
@@ -10,6 +22,7 @@
   align-items: center;
   justify-content: center;
   font-size: 30px;
+  color: lightsalmon;
 }
 
 #datesContainer {
@@ -24,21 +37,22 @@
   display: flex;
   height: 100px;
   width: 100px;
-  border: 1px solid black;
   border-radius: 10px;
   background-color: lightsalmon;
+  color: azure;
+  padding: 5px;
 }
 
 .blue-boxes {
   display: flex;
   height: 100px;
   width: 100px;
-  border: 1px solid black;
   border-radius: 10px;
   background-color: lightblue;
+  color: azure;
 }
 
 textarea {
   display: flex;
-  background-color: lightblue;
+  background-color: rgb(248, 215, 215);
 }
